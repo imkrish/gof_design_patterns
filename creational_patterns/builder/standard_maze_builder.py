@@ -44,4 +44,4 @@ class StandardMazeBuilder(MazeBuilder):
         elif room1_number - room2_number == -1:
             return Room.EAST
         else:
-            raise ValueError('These 2 rooms are not near')
+            raise ValueError('These 2 rooms are not next to each other')
