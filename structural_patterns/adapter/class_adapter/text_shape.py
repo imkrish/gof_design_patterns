@@ -26,11 +26,3 @@ class TextShape(Shape, TextView):
 
     def is_empty(self):
         TextView.is_empty(self)
-
-
-if __name__ == '__main__':
-    text_shape = TextShape()
-    text_shape.bounding_box(Point(1, 2), Point(5, 10))
-    text_shape.create_manipulator()
-    text_shape.is_empty()
-    print(text_shape)
