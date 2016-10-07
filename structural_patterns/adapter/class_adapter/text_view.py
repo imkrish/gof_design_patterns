@@ -18,8 +18,8 @@ class TextView(object):
     def is_empty(self):
         print('is_empty method from text view parent')
 
-    def __repr__(self):
+    def __repr__(self):  # prefer __repr__ than __str__
         return 'origin:\t({}, {})\nwidth:\t{}\nheight:\t{}'.format(self.__origin.get_x(),
-                                                             self.__origin.get_y(),
-                                                             self.__width,
-                                                             self.__height)
+                                                                   self.__origin.get_y(),
+                                                                   self.__width,
+                                                                   self.__height)
