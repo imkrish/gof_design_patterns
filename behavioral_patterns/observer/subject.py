@@ -5,16 +5,16 @@ from behavioral_patterns.observer.observer import Observer
 class Subject(ABC):
 
     def __init__(self):
-        self.__list = []
+        self.__observers = []
 
     def attach(self, observer):
         assert isinstance(observer, Observer)
-        self.__list.append(observer)
+        self.__observers.append(observer)
 
     def detach(self, observer):
         assert isinstance(object, Observer)
-        self.__list.remove(observer)
+        self.__observers.remove(observer)
 
     def notifyAll(self):
-        for observer in self.__list:
+        for observer in self.__observers:
             observer.update(self)
