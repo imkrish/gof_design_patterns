@@ -1,1 +1,1 @@
-# Gang of Four Design Patterns <Python>
+# Gang of Four Design Patterns Python
