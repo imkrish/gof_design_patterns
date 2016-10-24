@@ -1,10 +1,15 @@
-from behavioral_patterns.observer.observer import Observer
+from observer import Observer
+from clock_timer import ClockTimer
 
 
 class DigitalClock(Observer):
 
+    """Concrete observer knows about concrete subject"""
     def __init__(self, subject):
-        super().__init__(subject)
+        assert isinstance(subject, ClockTimer)
+        subject.attach(self)
+        self.__subject = subject
+        
         self.__hour = 0
         self.__minute = 0
         self.__second = 0
@@ -13,7 +18,7 @@ class DigitalClock(Observer):
         self.__hour = subject.get_hour()
         self.__minute = subject.get_minute()
         self.__second = subject.get_second()
-        self.__draw()
+        self.__display()
 
-    def __draw(self):
-        print("Digital Clock => {}:{}:{}".format(self.__hour, self.__minute, self.__second))
+    def __display(self):
+        print("Digital Clock Observer => {}:{}:{}\n-------------------------------------".format(self.__hour, self.__minute, self.__second))

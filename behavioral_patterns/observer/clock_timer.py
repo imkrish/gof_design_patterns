@@ -1,5 +1,5 @@
-from behavioral_patterns.observer.subject import Subject
-from behavioral_patterns.observer.interval import Interval
+from subject import Subject
+from interval import Interval
 import datetime
 
 
@@ -14,7 +14,10 @@ class ClockTimer(Subject):
         self.__tick()
 
     def __tick(self):
-
+        """ 
+        This subject will change its states(hour, minute, second) every 3 seconds, 
+        and then notify all of its observers
+        """
         def set_current_time():
             now = datetime.datetime.now()
             self.__hour = now.hour
@@ -22,17 +25,26 @@ class ClockTimer(Subject):
             self.__second = now.second
             self.notifyAll()
 
-        self.__interval = Interval(set_current_time, 1)
+        self.__interval = Interval(set_current_time, 3)
 
     def cancel_interval(self):
-        assert isinstance(self.__interval, Interval)
         self.__interval.cancel()
 
+    
     def get_hour(self):
+        """
+        For observers to get this state
+        """
         return self.__hour
 
     def get_minute(self):
+        """
+        For observers to get this state
+        """
         return self.__minute
 
     def get_second(self):
+        """
+        For observers to get this state
+        """
         return self.__second
