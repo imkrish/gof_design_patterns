@@ -8,9 +8,11 @@ class MonsterFactory(object):
     def __init__(self):
         self.__monsters = {}
 
+        Orc("Orc")
+
     def get_monster(self, monster_type):
         if monster_type not in self.__monsters:
-            new_monster = eval(monster_type + '()')
+            new_monster = eval(monster_type + '("' + monster_type + '")')
             # Check whether this object is an instance of Monster.
             assert isinstance(new_monster, Monster)
             # Then assign to a monster pool.
@@ -24,20 +26,20 @@ class Monster(ABC):
     """Flyweight"""
 
     def __init__(self, name):
-        self.__name = name
+        self._name = name
 
     @abstractmethod
     def draw(self, x, y, z):
         """ Default Implementation """
-        print('A {} is drawn at {}, {}, {}.'.format(self.__name, x, y, z))
+        print('A {} is drawn at {}, {}, {}.'.format(self._name, x, y, z))
 
 
 class Orc(Monster):
 
     """Concrete Flyweight"""
 
-    def __init__(self):
-        super().__init__('Orc')
+    # def __init__(self):
+    #     super().__init__('Orc')
 
     def draw(self, x, y, z):
         # Use default implementation from parent class
@@ -48,8 +50,8 @@ class Goblin(Monster):
 
     """Concrete Flyweight"""
 
-    def __init__(self):
-        super().__init__('Golbin')
+    # def __init__(self):
+    #     super().__init__('Golbin')
 
     def draw(self, x, y, z):
         # Use default implementation from parent class
